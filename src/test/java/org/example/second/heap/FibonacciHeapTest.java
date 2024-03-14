@@ -160,7 +160,7 @@ public class FibonacciHeapTest {
 
         Set<FibonacciHeap.Entry> entries = new LinkedHashSet<>();
         FibonacciHeap.Entry entry = heap.min();
-        search(entry, entries);
+        traverse(entry, entries);
 
         List<FibonacciHeap.Entry> entriesList = entries.stream().toList();
 
