@@ -7,9 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -107,7 +105,48 @@ public class FibonacciHeapTest {
                 Arguments.of(List.of(-5, 1, 2, 3, 4, 5)),
                 Arguments.of(List.of(-5, -5, -5, -5, -5)),
                 Arguments.of(List.of(1, 1, 1, 1, 1)),
-                Arguments.of(List.of(1, -5, 2, -4, 3, -3, 4, -2, 5, -1, 0))
+                Arguments.of(List.of(1, -5, 2, -4, 3, -3, 4, -2, 5, -1, 0)),
+                Arguments.of(List.of(1, 3, 2, 5, 4))
+        );
+    }
+
+    @Test
+    public void checkHeapStructure() {
+        List<Integer> values = List.of(1, 3, 2, 5, 4);
+        values.forEach(heap::enqueue);
+
+        List<FibonacciHeap.Entry> entries = new ArrayList<>();
+        FibonacciHeap.Entry entry = heap.min();
+        entries.add(entry);
+        while (!entries.get(0).getValue().equals(entry.getNext().getValue())) {
+            entry = entry.getNext();
+            entries.add(entry);
+        }
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(1, entries.get(0).getValue()),
+                () -> Assertions.assertEquals(4, entries.get(0).getNext().getValue()),
+                () -> Assertions.assertEquals(3, entries.get(0).getPrev().getValue())
+        );
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(5, entries.get(1).getNext().getValue()),
+                () -> Assertions.assertEquals(1, entries.get(1).getPrev().getValue())
+        );
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(2, entries.get(2).getNext().getValue()),
+                () -> Assertions.assertEquals(4, entries.get(2).getPrev().getValue())
+        );
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(3, entries.get(3).getNext().getValue()),
+                () -> Assertions.assertEquals(5, entries.get(3).getPrev().getValue())
+        );
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(1, entries.get(4).getNext().getValue()),
+                () -> Assertions.assertEquals(2, entries.get(4).getPrev().getValue())
         );
     }
 

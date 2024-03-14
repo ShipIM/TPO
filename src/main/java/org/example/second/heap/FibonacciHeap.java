@@ -122,6 +122,7 @@ public final class FibonacciHeap {
         size = 0;
     }
 
+    @Getter
     public static final class Entry {
         private int degree = 0;
 
