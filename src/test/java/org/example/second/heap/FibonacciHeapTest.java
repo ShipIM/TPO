@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -150,4 +151,57 @@ public class FibonacciHeapTest {
         );
     }
 
+    @Test
+    public void checkHeapStructureAfterMerge() {
+        List<Integer> values = List.of(1, 3, 2, 5, 4);
+        values.forEach(heap::enqueue);
+
+        heap.dequeueMin();
+
+        Set<FibonacciHeap.Entry> entries = new LinkedHashSet<>();
+        FibonacciHeap.Entry entry = heap.min();
+        search(entry, entries);
+
+        List<FibonacciHeap.Entry> entriesList = entries.stream().toList();
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(2, entriesList.get(0).getNext().getValue()),
+                () -> Assertions.assertEquals(2, entriesList.get(0).getPrev().getValue()),
+                () -> Assertions.assertEquals(3, entriesList.get(0).getChild().getValue())
+        );
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(4, entriesList.get(1).getNext().getValue()),
+                () -> Assertions.assertEquals(4, entriesList.get(1).getPrev().getValue()),
+                () -> Assertions.assertNull(entriesList.get(1).getChild())
+        );
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(3, entriesList.get(2).getNext().getValue()),
+                () -> Assertions.assertEquals(3, entriesList.get(2).getPrev().getValue()),
+                () -> Assertions.assertEquals(5, entriesList.get(2).getChild().getValue())
+        );
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(5, entriesList.get(3).getNext().getValue()),
+                () -> Assertions.assertEquals(5, entriesList.get(3).getPrev().getValue()),
+                () -> Assertions.assertNull(entriesList.get(3).getChild())
+        );
+    }
+
+    private void traverse(FibonacciHeap.Entry entry, Set<FibonacciHeap.Entry> entries) {
+        if (Objects.isNull(entry)) {
+            return;
+        }
+
+        entries.add(entry);
+
+        traverse(entry.getChild(), entries);
+
+        if (entries.contains(entry.getNext())) {
+            return;
+        }
+
+        traverse(entry.getNext(), entries);
+    }
 }
