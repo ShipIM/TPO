@@ -127,27 +127,32 @@ public class FibonacciHeapTest {
         Assertions.assertAll(
                 () -> Assertions.assertEquals(1, entries.get(0).getValue()),
                 () -> Assertions.assertEquals(4, entries.get(0).getNext().getValue()),
-                () -> Assertions.assertEquals(3, entries.get(0).getPrev().getValue())
+                () -> Assertions.assertEquals(3, entries.get(0).getPrev().getValue()),
+                () -> Assertions.assertNull(entries.get(0).getChild())
         );
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(5, entries.get(1).getNext().getValue()),
-                () -> Assertions.assertEquals(1, entries.get(1).getPrev().getValue())
+                () -> Assertions.assertEquals(1, entries.get(1).getPrev().getValue()),
+                () -> Assertions.assertNull(entries.get(1).getChild())
         );
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(2, entries.get(2).getNext().getValue()),
-                () -> Assertions.assertEquals(4, entries.get(2).getPrev().getValue())
+                () -> Assertions.assertEquals(4, entries.get(2).getPrev().getValue()),
+                () -> Assertions.assertNull(entries.get(2).getChild())
         );
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(3, entries.get(3).getNext().getValue()),
-                () -> Assertions.assertEquals(5, entries.get(3).getPrev().getValue())
+                () -> Assertions.assertEquals(5, entries.get(3).getPrev().getValue()),
+                () -> Assertions.assertNull(entries.get(3).getChild())
         );
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(1, entries.get(4).getNext().getValue()),
-                () -> Assertions.assertEquals(2, entries.get(4).getPrev().getValue())
+                () -> Assertions.assertEquals(2, entries.get(4).getPrev().getValue()),
+                () -> Assertions.assertNull(entries.get(4).getChild())
         );
     }
 
