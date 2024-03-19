@@ -10,7 +10,7 @@ import java.math.RoundingMode;
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
-public abstract class PrecisionFunction implements Calculable {
+public abstract class PrecisionFunction {
 
     private int precision = 5;
 

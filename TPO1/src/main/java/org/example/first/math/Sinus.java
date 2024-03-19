@@ -1,23 +1,18 @@
 package org.example.first.math;
 
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
 public class Sinus {
 
-    private final double BASE = 0.1;
     private int n = 50;
     private int precision = 5;
 
-    public Sinus(int n, int precision) {
-        this.n = n;
-        this.precision = precision;
-    }
-
     public double calculate(double x) {
-
         if (Double.isNaN(x) || Double.isInfinite(x)) {
             throw new IllegalArgumentException("x must be a number");
         }
@@ -30,7 +25,7 @@ public class Sinus {
         x = period(x);
 
         int sign = 1;
-        double degreeStep = x * x, variable = x, difference = Math.pow(BASE, precision);
+        double degreeStep = x * x, variable = x, difference = Math.pow(0.1, precision);
         double step = 1, factorial = step;
 
         for (int i = 1; i < n; i++) {

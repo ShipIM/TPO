@@ -10,7 +10,6 @@ public class Cotangent extends PrecisionFunction {
 
     private final Tangent tangent;
 
-    @Override
     public double calculate(double x) {
         return round(1 / tangent.calculate(x));
     }

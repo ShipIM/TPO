@@ -11,7 +11,6 @@ public class Cosine extends PrecisionFunction {
 
     private final Sinus sinus;
 
-    @Override
     public double calculate(double x) {
         double sinValue = sinus.calculate(x);
 

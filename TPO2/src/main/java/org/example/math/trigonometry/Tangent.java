@@ -12,7 +12,6 @@ public class Tangent extends PrecisionFunction {
     private final Sinus sinus;
     private final Cosine cosine;
 
-    @Override
     public double calculate(double x) {
         return round(sinus.calculate(x) / cosine.calculate(x));
     }
