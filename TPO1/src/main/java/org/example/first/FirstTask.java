@@ -5,12 +5,11 @@ import org.example.first.math.Sinus;
 public class FirstTask {
 
     public static void main(String[] args) {
-        Sinus sinus = new Sinus();
+        Sinus sinus = new Sinus(1, 1);
 
-        double x = 50;
-        int n = 100;
+        double x = -Math.PI;
 
-        System.out.println(sinus.calculate(x, n));
+        System.out.println(sinus.calculate(x));
     }
 
 }

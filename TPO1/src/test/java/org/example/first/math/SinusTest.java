@@ -18,7 +18,7 @@ public class SinusTest {
             Double.MIN_VALUE
     })
     public void checkCalculate(double x) {
-        Assertions.assertEquals(Math.sin(x), sinus.calculate(x, 50), 0.00001);
+        Assertions.assertEquals(Math.sin(x), sinus.calculate(x), 0.00001);
     }
 
     @ParameterizedTest
@@ -27,13 +27,16 @@ public class SinusTest {
     })
     public void calculateThrowsExceptionOnExceptionalX(double x) {
         Assertions.assertThrows(IllegalArgumentException.class,
-                () -> sinus.calculate(x, 50));
+                () -> sinus.calculate(x));
     }
 
     @Test
     public void calculateWithBigNThrowsException() {
+        sinus.setN(Integer.MAX_VALUE);
+        sinus.setPrecision(1000);
+
         Assertions.assertThrows(ArithmeticException.class,
-                () -> sinus.calculate(Math.PI, Integer.MAX_VALUE));
+                () -> sinus.calculate(Math.PI));
     }
 
     @ParameterizedTest
@@ -41,8 +44,10 @@ public class SinusTest {
             -1, 0
     })
     public void calculateWithNLessThanOneThrowsException(int n) {
+        sinus.setN(n);
+
         Assertions.assertThrows(IllegalArgumentException.class,
-                () -> sinus.calculate(Math.PI, n));
+                () -> sinus.calculate(Math.PI));
     }
 
 }
