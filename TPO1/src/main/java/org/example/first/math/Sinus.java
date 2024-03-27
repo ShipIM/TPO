@@ -3,11 +3,12 @@ package org.example.first.math;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.example.first.api.Calculable;
 
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Sinus {
+public class Sinus implements Calculable {
 
     private int n = 50;
     private int precision = 5;

@@ -2,7 +2,7 @@ package org.example.math.trigonometry;
 
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import org.example.math.api.PrecisionFunction;
+import org.example.api.math.PrecisionFunction;
 
 @Setter
 @RequiredArgsConstructor

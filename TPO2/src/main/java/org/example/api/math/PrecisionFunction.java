@@ -1,8 +1,9 @@
-package org.example.math.api;
+package org.example.api.math;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.example.first.api.Calculable;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -10,7 +11,7 @@ import java.math.RoundingMode;
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
-public abstract class PrecisionFunction {
+public abstract class PrecisionFunction implements Calculable {
 
     private int precision = 5;
 

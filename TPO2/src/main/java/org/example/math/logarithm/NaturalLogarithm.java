@@ -3,11 +3,12 @@ package org.example.math.logarithm;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.example.first.api.Calculable;
 
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class NaturalLogarithm {
+public class NaturalLogarithm implements Calculable {
 
     private int n = 50;
     private int precision = 5;
