@@ -16,9 +16,7 @@ public class Sinus implements Calculable {
     public double calculate(double x) {
         if (Double.isNaN(x) || Double.isInfinite(x)) {
             throw new IllegalArgumentException("x must be a number");
-        }
-
-        if (n <= 0) {
+        } else if (n <= 0) {
             throw new IllegalArgumentException("n must be positive number");
         }
 

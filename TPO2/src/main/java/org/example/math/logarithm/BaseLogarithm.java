@@ -2,17 +2,23 @@ package org.example.math.logarithm;
 
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import org.example.api.math.PrecisionFunction;
+import org.example.first.api.Calculable;
 
-@Setter
+import java.util.Objects;
+
 @RequiredArgsConstructor
-public class BaseLogarithm extends PrecisionFunction {
+@Setter
+public class BaseLogarithm implements Calculable {
 
     private final NaturalLogarithm naturalLogarithm;
-    private final Integer base;
+    private Integer base;
 
     public double calculate(double x) {
-        return round(naturalLogarithm.calculate(x) / naturalLogarithm.calculate(base));
+        if (Objects.isNull(base) || base <= 0) {
+            throw new IllegalArgumentException("base must be positive number");
+        }
+
+        return naturalLogarithm.calculate(x) / naturalLogarithm.calculate(base);
     }
 
 }

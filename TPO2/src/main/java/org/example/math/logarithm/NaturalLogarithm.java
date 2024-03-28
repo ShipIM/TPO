@@ -5,20 +5,18 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.example.first.api.Calculable;
 
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Setter
 public class NaturalLogarithm implements Calculable {
 
     private int n = 50;
     private int precision = 5;
 
     public double calculate(double x) {
-        if (Double.isNaN(x) || Double.isInfinite(x)) {
-            throw new IllegalArgumentException("x must be a number");
-        }
-
-        if (n <= 0) {
+        if (Double.isNaN(x) || Double.isInfinite(x) || x <= 0) {
+            throw new IllegalArgumentException("x must be a positive number");
+        } else if (n <= 0) {
             throw new IllegalArgumentException("n must be positive number");
         }
 
