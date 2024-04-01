@@ -14,8 +14,8 @@ public class BaseLogarithm implements Calculable {
     private Integer base;
 
     public double calculate(double x) {
-        if (Objects.isNull(base) || base <= 0) {
-            throw new IllegalArgumentException("base must be positive number");
+        if (Objects.isNull(base) || base <= 0 || base == 1) {
+            throw new IllegalArgumentException("base must be positive number and not 1");
         }
 
         return naturalLogarithm.calculate(x) / naturalLogarithm.calculate(base);

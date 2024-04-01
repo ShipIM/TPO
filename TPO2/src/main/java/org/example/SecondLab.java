@@ -31,8 +31,15 @@ public class SecondLab {
         Function function = new Function(sinus, naturalLogarithm, cosine, secant, tangent, cotangent,
                 base3, base5, base10);
 
-        CsvCalculableWriter writer = new CsvCalculableWriter(-2f, 2f, 0.01f);
-        writer.write("csv/function.csv", sinus);
+        CsvCalculableWriter writer = new CsvCalculableWriter((float) -Math.PI, (float) Math.PI, 0.01f);
+        writer.write("csv/sinus.csv", sinus);
+        writer.write("csv/naturalLogarithm.csv", naturalLogarithm);
+        writer.write("csv/cosine.csv", cosine);
+        writer.write("csv/secant.csv", secant);
+        writer.write("csv/tangent.csv", tangent);
+        writer.write("csv/cotangent.csv", cotangent);
+        writer.write("csv/base3.csv", base3);
+        writer.write("csv/function.csv", function);
     }
 
 }

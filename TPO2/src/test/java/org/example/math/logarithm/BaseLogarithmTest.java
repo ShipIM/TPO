@@ -72,7 +72,8 @@ public class BaseLogarithmTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> mockedBaseLogarithm.calculate(0));
     }
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1})
     public void calculateBaseIllegalValue() {
         mockedBaseLogarithm.setBase(0);
 
